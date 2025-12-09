@@ -35,7 +35,32 @@ public class RecursivePractice {
         // Recursive step
         return odd * multiplyOdds(n - 1);
     }
+    public static int findSecondLargest(int[] arr) {
+        // initialize largest and second largest with MIN_VALUE to start
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
 
+        return findSecondLargestHelper(arr, 0, largest, secondLargest);
+    }
 
+    private static int findSecondLargestHelper(int[] arr, int index,
+                                               int largest, int secondLargest) {
+
+        // Base case: reached end of array
+        if (index == arr.length) {
+            return secondLargest;
+        }
+        int current = arr[index];
+        if (current > largest) {
+            // current becomes largest, old largest becomes secondLargest
+            secondLargest = largest;
+            largest = current;
+        } else if (current > secondLargest) {
+            // current between secondLargest and largest
+            secondLargest = current;
+        }
+        // Recurse to next index with updated values
+        return findSecondLargestHelper(arr, index + 1, largest, secondLargest);
+    }
 
 }
