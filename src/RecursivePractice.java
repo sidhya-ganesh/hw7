@@ -62,5 +62,18 @@ public class RecursivePractice {
         // Recurse to next index with updated values
         return findSecondLargestHelper(arr, index + 1, largest, secondLargest);
     }
+    public static double permutation(int n, int r) {
+        if (n < 0 || r < 0 || n < r) {
+            throw new IllegalArgumentException("Invalid n or r");
+        }
+
+        // Base case: choosing 0 items --> 1 permutation
+        if (r == 0) {
+            return 1.0;
+        }
+
+        // Recursive case: P(n, r) = n * P(n-1, r-1)
+        return n * permutation(n - 1, r - 1);
+    }
 
 }
