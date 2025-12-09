@@ -75,5 +75,19 @@ public class RecursivePractice {
         // Recursive case: P(n, r) = n * P(n-1, r-1)
         return n * permutation(n - 1, r - 1);
     }
+    public static int waysToClimb(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive");
+        }
+        // Base cases
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        // Recursive case:
+        return waysToClimb(n - 1) + waysToClimb(n - 2);
+    }
 
 }
