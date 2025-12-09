@@ -10,7 +10,17 @@ public class RecursivePractice {
         }
         return convertIntToString(x/10) + ((char) ('0' + (x%10)));
     }
-
-
+    public static int countSubstrings(String word, String substring) {
+        // base case --> word length < substring length
+        if (word.length() < substring.length()) {
+            return 0;
+        }
+        if (word.substring(0, substring.length()).equals(substring)) {
+            return 1 + countSubstrings(word.substring(1), substring);
+        }
+        else {
+            return countSubstrings(word.substring(1), substring);
+        }
+    }
 
 }
