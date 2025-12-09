@@ -22,5 +22,20 @@ public class RecursivePractice {
             return countSubstrings(word.substring(1), substring);
         }
     }
+    public static int multiplyOdds(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive");
+        }
+        // Base case: first odd number is 1
+        if (n == 1) {
+            return 1;
+        }
+        // nth odd number = 2*n - 1
+        int odd = 2 * n - 1;
+        // Recursive step
+        return odd * multiplyOdds(n - 1);
+    }
+
+
 
 }
